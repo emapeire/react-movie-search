@@ -5,6 +5,29 @@
   text-align: center;
 }
 
-input {
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   margin: 1rem auto;
+}
+
+.label {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
