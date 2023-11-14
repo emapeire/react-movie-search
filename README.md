@@ -1,8 +1,20 @@
-# React + Vite
+# Sentence
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Create a webapp to search movies
 
-Currently, two official plugins are available:
+API to use:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- <https://www.omdbapi.com/>
+- API_KEY: 4287ad07
+
+## Requirements
+
+- You need to show an input to search movies and a button to trigger the search.
+- A list of movies should be displayed below the search and the input, with the respective poster, title, year.
+- Have movies displayed in a responsive grid.
+
+## Bonus
+
+- Avoid that made the same search twice.
+- Have search made automatically when the user types.
+- Avoid that the API is called every time the user types a letter in the search input. (Hint: use debounce).
