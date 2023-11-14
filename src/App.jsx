@@ -6,7 +6,7 @@ function App() {
       <h1>React Movie Search</h1>
       <form>
         <label>Put yout movie here:</label>
-        <input type='text' placeholder='Search...' />
+        <input type='text' placeholder='The Matrix...' />
       </form>
       <button>Search</button>
     </>
