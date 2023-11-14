@@ -1,6 +1,5 @@
 import './App.css'
 import Movies from './components/Movies'
-// import withoutResults from './mocks/without-results.json'
 
 export default function App() {
   return (
