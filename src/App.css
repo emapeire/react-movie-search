@@ -31,3 +31,8 @@ main {
   flex-direction: column;
   justify-content: center;
 }
+
+.error {
+  color: red;
+  font-size: small;
+}
