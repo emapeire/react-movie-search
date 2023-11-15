@@ -12,10 +12,9 @@ export default function App() {
 
   return (
     <div className='page'>
-      <header>
+      <header className='header'>
         <h1>React Movie Search</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <label className='label'>Put yout movie here:</label>
           <input
             style={{
               border: '1px solid transparent',

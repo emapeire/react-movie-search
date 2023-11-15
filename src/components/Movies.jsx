@@ -10,7 +10,7 @@ export default function Movies() {
     <ul className='movies'>
       {movies.map((movie) => (
         <li className='movie' key={movie.id}>
-          <h2>{movie.title}</h2>
+          <h3>{movie.title}</h3>
           <p>{movie.year}</p>
           <img src={movie.poster} alt={movie.title} />
         </li>
