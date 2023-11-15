@@ -1,51 +1,14 @@
-import { useState, useEffect } from 'react'
 import './App.css'
 import Movies from './components/Movies'
-// import { useRef } from 'react'
+import useSearch from './hooks/useSearch'
 
 export default function App() {
-  // Validation using useRef()
-  // const inputRef = useRef()
-
-  // Controlled validation (useState)
-  const [query, setQuery] = useState('')
-  const [error, setError] = useState(null)
+  const { search, handleSearch, error } = useSearch()
 
   const handleSubmit = (event) => {
     event.preventDefault()
-
-    // Uncontrolled validation
-    // const { query } = Object.fromEntries(new window.FormData(event.target))
-
-    console.log({ query })
-
-    // Validation using useRef()
-    // const value = inputRef.current.value
-    // console.log(value)
+    console.log({ search })
   }
-
-  const handleChange = (event) => {
-    // Controlled validation (useState)
-    const newQuery = event.target.value
-    if (newQuery.startsWith(' ')) return
-    setQuery(newQuery)
-  }
-
-  useEffect(() => {
-    if (query === '') {
-      setError('Please enter a movie name')
-      return
-    }
-    if (query.match(/^\d+$/)) {
-      setError('Please enter a valid movie name')
-      return
-    }
-    if (query.length < 3) {
-      setError('Please enter at least 3 characters')
-      return
-    }
-    setError(null)
-  }, [query])
 
   return (
     <div className='page'>
@@ -54,11 +17,13 @@ export default function App() {
         <form className='form' onSubmit={handleSubmit}>
           <label className='label'>Put yout movie here:</label>
           <input
-            onChange={handleChange}
-            value={query}
-            name='query'
-            // Validation using useRef()
-            // ref={inputRef}
+            style={{
+              border: '1px solid transparent',
+              borderColor: error ? 'red' : 'transparent'
+            }}
+            onChange={handleSearch}
+            value={search}
+            name='search'
             type='text'
             placeholder='The Matrix...'
           />
