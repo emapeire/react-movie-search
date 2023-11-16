@@ -1,13 +1,15 @@
 import './App.css'
 import Movies from './components/Movies'
 import useSearch from './hooks/useSearch'
+import useMovies from './hooks/useMovies'
 
 export default function App() {
   const { search, handleSearch, error } = useSearch()
+  const { movies, getMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log({ search })
+    getMovies()
   }
 
   return (
@@ -31,7 +33,7 @@ export default function App() {
         {error && <p className='error'>{error}</p>}
       </header>
       <main>
-        <Movies />
+        <Movies movies={movies} />
       </main>
     </div>
   )

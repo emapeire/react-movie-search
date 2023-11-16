@@ -1,9 +1,6 @@
-import useMovies from '../hooks/useMovies'
-
-export default function Movies() {
-  const { movies } = useMovies()
+/* eslint-disable react/prop-types */
+export default function Movies({ movies }) {
   const hasMovies = movies?.length > 0
-
   if (!hasMovies) return <p>No movies found</p>
 
   return (
