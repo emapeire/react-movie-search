@@ -1,14 +1,19 @@
 import { API_MOVIE_URL } from '../utils/constants'
-import withoutResults from '../mocks/without-results.json'
-// import withResults from '../mocks/with-results.json'
 
-export default function fetchMovies({ search, setResponseMovies }) {
-  if (search) {
-    // setResponseMovies(withResults)
-    fetch(`${API_MOVIE_URL}${search}`)
-      .then((res) => res.json())
-      .then((json) => setResponseMovies(json))
-  } else {
-    setResponseMovies(withoutResults)
+export const searchMovies = async ({ search }) => {
+  if (search === '') return null
+  try {
+    const response = await fetch(`${API_MOVIE_URL}${search}`)
+    const json = await response.json()
+    const movies = json.Search
+
+    return movies?.map((movie) => ({
+      id: movie.imdbID,
+      title: movie.Title,
+      year: movie.Year,
+      poster: movie.Poster
+    }))
+  } catch (error) {
+    throw new Error('Error searching movies')
   }
 }

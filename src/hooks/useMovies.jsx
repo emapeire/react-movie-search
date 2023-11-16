@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react'
-import fetchMovies from '../services/movies'
+import { useState } from 'react'
+import { searchMovies } from '../services/movies'
 
 export default function useMovies({ search }) {
-  const [responseMovies, setResponseMovies] = useState([])
-  const movies = responseMovies?.Search
+  const [movies, setMovies] = useState([])
 
-  const propsMovies = movies?.map((movie) => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    poster: movie.Poster
-  }))
+  const getMovies = async () => {
+    const newMovies = await searchMovies({ search })
+    setMovies(newMovies)
+  }
 
-  useEffect(() => {
-    fetchMovies({ search, setResponseMovies })
-  }, [search])
-
-  return { movies: propsMovies, getMovies: fetchMovies }
+  return { movies, getMovies }
 }
