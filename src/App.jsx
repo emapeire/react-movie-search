@@ -6,19 +6,25 @@ import { useState } from 'react'
 
 export default function App() {
   const [sort, setSort] = useState(false)
-  const { search, handleSearch, errorSearch } = useSearch()
+  const { search, updateSearch, errorSearch } = useSearch()
   const { movies, getMovies, loadingMovies } = useMovies({
     search,
     sort
   })
 
-  const handleSort = () => {
-    setSort(!sort)
+  const handleSearch = (event) => {
+    const newSearch = event.target.value
+    updateSearch(newSearch)
+    getMovies({ search: newSearch })
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies({ search })
+  }
+
+  const handleSort = () => {
+    setSort(!sort)
   }
 
   return (

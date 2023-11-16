@@ -25,9 +25,5 @@ export default function useSearch() {
     setError(null)
   }, [search])
 
-  const handleSearch = (event) => {
-    setSearch(event.target.value)
-  }
-
-  return { search, handleSearch, errorSearch: error }
+  return { search, updateSearch: setSearch, errorSearch: error }
 }
