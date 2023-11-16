@@ -18,7 +18,7 @@ export default function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    getMovies()
+    getMovies({ search })
   }
 
   return (
