@@ -29,5 +29,5 @@ export default function useSearch() {
     setSearch(event.target.value)
   }
 
-  return { search, handleSearch, error }
+  return { search, handleSearch, errorSearch: error }
 }

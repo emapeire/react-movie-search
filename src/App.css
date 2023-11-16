@@ -65,3 +65,9 @@ main {
   border-radius: 8px;
   margin-top: 16px;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

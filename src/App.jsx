@@ -4,8 +4,10 @@ import useSearch from './hooks/useSearch'
 import useMovies from './hooks/useMovies'
 
 export default function App() {
-  const { search, handleSearch, error } = useSearch()
-  const { movies, getMovies } = useMovies({ search })
+  const { search, handleSearch, errorSearch } = useSearch()
+  const { movies, getMovies, loadingMovies } = useMovies({
+    search
+  })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -20,7 +22,7 @@ export default function App() {
           <input
             style={{
               border: '1px solid transparent',
-              borderColor: error ? 'red' : 'transparent'
+              borderColor: errorSearch ? 'red' : 'transparent'
             }}
             onChange={handleSearch}
             value={search}
@@ -30,10 +32,14 @@ export default function App() {
           />
           <button type='sumbit'>Search</button>
         </form>
-        {error && <p className='error'>{error}</p>}
+        {errorSearch && <p className='error'>{errorSearch}</p>}
       </header>
       <main>
-        <Movies movies={movies} />
+        {loadingMovies ? (
+          <p className='loading'>Loading...</p>
+        ) : (
+          <Movies movies={movies} />
+        )}
       </main>
     </div>
   )
