@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './App.css'
 import Movies from './components/Movies'
 import useSearch from './hooks/useSearch'
 import useMovies from './hooks/useMovies'
-import { useEffect, useRef, useState } from 'react'
-import debounce from 'just-debounce-it'
+import { useState } from 'react'
+import useDebounce from './hooks/useDebounce'
 
 export default function App() {
   const [sort, setSort] = useState(false)
@@ -13,22 +14,15 @@ export default function App() {
     sort
   })
 
-  const debouncedSearch = useRef(
-    debounce((newSearch) => {
-      getMovies({ search: newSearch })
-    }, 300)
+  const debouncedSearch = useDebounce(
+    (newSearch) => getMovies({ search: newSearch }),
+    300
   )
-
-  useEffect(() => {
-    debouncedSearch.current = debounce((newSearch) => {
-      getMovies({ search: newSearch })
-    }, 300)
-  }, [getMovies])
 
   const handleSearch = (event) => {
     const newSearch = event.target.value
     updateSearch(newSearch)
-    debouncedSearch.current(newSearch)
+    debouncedSearch(newSearch)
   }
 
   const handleSubmit = (event) => {
