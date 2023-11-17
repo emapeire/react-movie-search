@@ -14,10 +14,7 @@ export default function App() {
     sort
   })
 
-  const debouncedSearch = useDebounce(
-    (newSearch) => getMovies({ search: newSearch }),
-    300
-  )
+  const debouncedSearch = useDebounce((search) => getMovies({ search }), 300)
 
   const handleSearch = (event) => {
     const newSearch = event.target.value
